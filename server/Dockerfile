@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18-alpine AS production
+FROM node:18-alpine AS Basketion
 
 WORKDIR /app
 

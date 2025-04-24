@@ -1,7 +1,7 @@
 import { getBasketRepository } from "../repositories/basket.repository";
-import { Product } from "../stub/basket.stub";
+import { Basket } from "../stub/basket.stub";
 
-const getBasket = async (): Promise<Product[]> => {
+const getBasket = async (): Promise<Basket[]> => {
     try {
         const basketRepository = getBasketRepository();
         return await basketRepository.getBasket();
@@ -10,7 +10,7 @@ const getBasket = async (): Promise<Product[]> => {
     }
 }
 
-const addItem = async (item: Product) => {
+const addItem = async (item: Basket) => {
     try {
         const basketRepository = getBasketRepository();
         await basketRepository.addItem(item);
@@ -33,7 +33,7 @@ const deleteItem = async (id: number) => {
     }
 }
 
-const editItem = async (id: number, item: Product) => {
+const editItem = async (id: number, item: Basket) => {
     try {
         const basketRepository = getBasketRepository();
         await basketRepository.editItem(id, item);

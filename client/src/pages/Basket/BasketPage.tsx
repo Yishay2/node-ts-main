@@ -21,10 +21,10 @@ export default function BasketPage() {
         fetchBasket();
     }, []);
 
-    const removeFromCart = async (id: number) => {
+    const removeFromCart = async (product: Product) => {
         try {
-            await axios.delete(`http://localhost:3005/basket/${id}`);
-            setBasket(basket.filter((product) => product.id !== id));
+            await axios.delete(`http://localhost:3005/basket/${product.id}`);
+            setBasket(basket.filter((prod) => prod.id !== product.id));
         } catch (error) {
             console.error("Error removing product from cart:", error);
         }
@@ -34,7 +34,7 @@ export default function BasketPage() {
         <div className='size-full overflow-scroll'>
             <h1 className="w-full text-3xl font-bold text-center">Basket</h1>
             <div className="p-6 grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
-                {basket?.map((product) => <BasketCard key={product.id} {...product} removeFromCart={removeFromCart} />)}
+                {basket?.map((product) => <BasketCard key={product.id} {...product} action={removeFromCart} />)}
             </div>
         </div>
     )

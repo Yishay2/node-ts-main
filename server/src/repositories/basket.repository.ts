@@ -1,4 +1,4 @@
-import { Product } from "../stub/basket.stub";
+import { Basket } from "../stub/basket.stub";
 import { ONE_MONTH } from "../utils/constans";
 import { RedisConnection } from "../utils/redisConnection";
 
@@ -16,17 +16,17 @@ export class BasketRepository {
         return BasketRepository.instance;
     }
 
-    async getBasket(): Promise<Product[]> {
+    async getBasket(): Promise<Basket[]> {
         const basket = await this.redisClient.getClient().GET('basket');
         return basket ? JSON.parse(basket) : [];
     }
 
-    private async editBasket(basket: Product[]): Promise<void> {
+    private async editBasket(basket: Basket[]): Promise<void> {
         // after 1 month, the basket will be deleted from redis if no change 
         await this.redisClient.getClient().SETEX('basket', ONE_MONTH, JSON.stringify(basket));
     }
 
-    async addItem(item: Product): Promise<void> {
+    async addItem(item: Basket): Promise<void> {
         const basket = await this.getBasket();
         const index = basket.findIndex(i => i.id === item.id);
         if (index !== -1) {
@@ -48,7 +48,7 @@ export class BasketRepository {
         return false;
     }
 
-    async editItem(id: number, item: Product): Promise<void> {
+    async editItem(id: number, item: Basket): Promise<void> {
         const basket = await this.getBasket();
         const index = basket.findIndex(i => i.id === id);
         if (index !== -1) {

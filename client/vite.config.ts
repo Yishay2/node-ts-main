@@ -27,11 +27,11 @@ export default defineConfig(({ mode }) => ({
   cacheDir: '../node_modules/.cache/vite',
   build: {
     outDir: '../dist', // <--- default is dist. Specify the output directory (relative to project root).
-    sourcemap: true, // <--- default is false. Options are: true, false, inline, hidden. Generate production source maps. If true, a separate sourcemap file will be created. If 'inline', the sourcemap will be appended to the resulting output file as a data URI. 'hidden' works like true except that the corresponding sourcemap comments in the bundled files are suppressed.
+    sourcemap: true, // <--- default is false. Options are: true, false, inline, hidden. Generate Basketion source maps. If true, a separate sourcemap file will be created. If 'inline', the sourcemap will be appended to the resulting output file as a data URI. 'hidden' works like true except that the corresponding sourcemap comments in the bundled files are suppressed.
     minify: 'esbuild', // <--- Options are: 'esbuild' (default) | 'terser'. The default is esbuild which is 20 ~ 40x faster than terser and only 1 ~ 2% worse compression. Terser must be installed when it is set to 'terser'.
     target: 'esnext', // <--- default is modules. Options are: modules, esnext,
     manifest: true, // <--- Defaults to false. When set to true, the build will also generate a manifest.json file that contains a mapping of non-hashed asset filenames to their hashed versions, which can then be used by a server framework to render the correct asset links. When the value is a string, it will be used as the manifest file name.
-    // ssrManifest: true, // <--- When set to true, the build will also generate an SSR manifest for determining style links and asset preload directives in production. When the value is a string, it will be used as the manifest file name. Defaults to false.
+    // ssrManifest: true, // <--- When set to true, the build will also generate an SSR manifest for determining style links and asset preload directives in Basketion. When the value is a string, it will be used as the manifest file name. Defaults to false.
     emptyOutDir: true, // <--- defaults to true if outDir is inside root. By default, Vite will empty the outDir on build if it is inside project root. It will emit a warning if outDir is outside of root to avoid accidentally removing important files. You can explicitly set this option to suppress the warning. This is also available via command line as --emptyOutDir
     chunkSizeWarningLimit: 500, // <--- default is 500. Limit for chunk size warnings (in kbs).
     watch: null, // <--- default is null. Set to {} to enable rollup watcher.
